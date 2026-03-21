@@ -1,0 +1,62 @@
+import numpy as np
+import pandas as pd 
+import matplotlib.pyplot as plt 
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
+
+#load the dates 
+
+data = pd.read_csv('dataset_regresion_logistica.csv')
+
+print(data.head())
+print(data.info())
+print(data.describe())
+
+
+x = data.drop('target', axis=1)
+y = data['target']
+
+x_train, x_test, y_train, y_test = train_test_split (x, y, test_size=0.2, random_state=42)
+
+scaler= StandardScaler()
+
+x_train_scaled = scaler.fit_transform(x_train)
+x_test_scaled = scaler.transform(x_test)
+
+
+logistic_model = LogisticRegression()
+logistic_model.fit(x_train_scaled, y_train)
+
+y_pred = logistic_model.predict(x_test_scaled)
+
+conf_matrix = confusion_matrix(y_test, y_pred)
+
+plt.figure(figsize=(8,6))
+sns.heatmap(conf_matrix, annot=True, fmt='d', cmap= 'Blues', cbar=False)
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.title('Confusion Matrix')
+plt.show()
+
+print( classification_report(y_test, y_pred))
+
+accuracy= accuracy_score( y_test, y_pred)
+print(f'Exactitud del modelo: {accuracy * 100: .2f}%')
+
+# --- Añade esto al final de RegressionLogistic.py ---
+
+def pre_resultado(datos_entrada):
+    # Usamos el scaler y el modelo que ya definiste arriba en tu archivo
+    datos_array = np.array([datos_entrada])
+    datos_escalados = scaler.transform(datos_array)
+    prediccion = logistic_model.predict(datos_escalados)[0]
+    return int(prediccion)
+
+# TIP: Envuelve tus gráficas (plt.show()) en este bloque para que 
+# Flask no intente abrir ventanas de gráficas cada vez que cargue.
+if __name__ == "__main__":
+    plt.show()
+    print("Modelo listo.")
