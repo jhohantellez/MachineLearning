@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import LinearRegression
 from LogisticRegression import pre_resultado
+from flask import Flask, render_template
 
 app= Flask(__name__)
 
@@ -50,3 +51,5 @@ def predict():
 if __name__ == "__main__":
     app.run(debug=True)
 
+
+print(app.url_map)
