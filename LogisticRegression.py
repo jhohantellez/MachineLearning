@@ -46,17 +46,12 @@ print( classification_report(y_test, y_pred))
 accuracy= accuracy_score( y_test, y_pred)
 print(f'Exactitud del modelo: {accuracy * 100: .2f}%')
 
-# --- Añade esto al final de RegressionLogistic.py ---
-
 def pre_resultado(datos_entrada):
-    # Usamos el scaler y el modelo que ya definiste arriba en tu archivo
     datos_array = np.array([datos_entrada])
     datos_escalados = scaler.transform(datos_array)
     prediccion = logistic_model.predict(datos_escalados)[0]
     return int(prediccion)
 
-# TIP: Envuelve tus gráficas (plt.show()) en este bloque para que 
-# Flask no intente abrir ventanas de gráficas cada vez que cargue.
 if __name__ == "__main__":
     plt.show()
     print("Modelo listo.")

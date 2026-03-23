@@ -28,8 +28,7 @@ def predict():
     resultado = None
     if request.method == 'POST':
         try:
-            # Recogemos los datos del formulario
-            # Asegúrate de que los names coincidan con tu index.html
+
             datos_usuario = [
                 float(request.form['edad']),
                 float(request.form['ingreso_mensual']),
@@ -38,8 +37,7 @@ def predict():
                 float(request.form['compras_previas']),
                 float(request.form['descuento_usado'])
             ]
-            
-            # Llamamos a la función del archivo RegressionLogistic.py
+             
             res_binario = pre_resultado(datos_usuario)
             
             resultado = "EL CLIENTE COMPRARÁ (1)" if res_binario == 1 else "EL CLIENTE NO COMPRARÁ (0)"
