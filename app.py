@@ -42,7 +42,7 @@ def predict():
 
     return render_template('logisticRegression.html', prediction_text=resultado)
 
-
+#-----------------Use Cases-------------------------------------------
 @app.route("/UseCase/1")
 def UseCase1():
     return render_template('use_cases/use_case1.html')
@@ -58,6 +58,12 @@ def UseCase3():
 @app.route("/UseCase/4")
 def UseCase4():
     return render_template("use_cases/use_case4.html")
+
+#-------------------------------------------------------------------------
+
+@app.route("/linearregression/concepts")
+def concepts():
+    return render_template("linear_regression/basic_concepts.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
