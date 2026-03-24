@@ -55,6 +55,9 @@ def UseCase2():
 def UseCase3():
     return render_template("use_cases/use_case3.html")
 
+@app.route("/UseCase/4")
+def UseCase4():
+    return render_template("use_cases/use_case4.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
