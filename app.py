@@ -5,15 +5,9 @@ from flask import Flask, render_template
 
 app= Flask(__name__)
 
-#create new route
-@app.route('/')
 
-#defined function
-def home ():
-    return 'hello flask'
-
-@app.route("/FirstPage")
-def firstPage():
+@app.route("/")
+def Home():
     return render_template('index.html')
 
 @app.route('/LinearRegression/',methods=["GET","POST"])
@@ -47,6 +41,15 @@ def predict():
             resultado = f"Error en la predicción: {e}"
 
     return render_template('logisticRegression.html', prediction_text=resultado)
+
+
+@app.route("/UseCase/1")
+def UseCase1():
+    return render_template('use_cases/use_case1.html')
+
+@app.route("/UseCase/2")
+def UseCase2():
+    return render_template("use_cases/use_case2.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
