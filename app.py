@@ -5,11 +5,13 @@ from flask import Flask, render_template, request
 
 app= Flask(__name__)
 
-
-
-
 @app.route("/")
 def Home():
+    return render_template('home.html')
+
+
+@app.route("/usecases")
+def UseCase():
     return render_template('index.html')
 
 #-----------------Use Cases-------------------------------------------
