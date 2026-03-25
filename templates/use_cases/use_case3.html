@@ -4,62 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Assistants - ML Use Case</title>
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f4f6f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: #ACE1AF; 
         }
+
         .container {
-            background-color: #ffffff;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            max-width: 800px;
-            margin: auto;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            border: 6px solid #50C878;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
+
         h1 {
             text-align: center;
-            color: #333;
+            color: #2d6a4f;
         }
+
         h2 {
-            color: #2c3e50;
-            margin-top: 20px;
+            color: #40916c;
+            margin-top: 25px;
         }
+
         p {
-            color: #555;
             line-height: 1.6;
+            color: #444;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            width: 50%;
+            max-width: 250px;
+            border-radius: 12px;
+            border: 3px solid #a8e6cf;
+        }
+
+        .card {
+            background: #f6fff8;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border-left: 5px solid #95d5b2;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #1b4332;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Virtual Assistants</h1>
+        <h1> Virtual Assistants</h1>
 
-        <h2>Problem</h2>
-        <p>
-            The goal is to understand and correctly respond to user requests by analyzing voice or text,
-            interpreting the intent and context of the conversation.
-        </p>
+        <div class="image-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/12610/12610409.png">
+        </div>
+
+        <h2> Problem</h2>
+        <div class="card">
+            <p>
+                The goal is to understand and correctly respond to user requests by analyzing voice or text,
+                interpreting the <span class="highlight">intent</span> and <span class="highlight">context</span>.
+            </p>
+        </div>
 
         <h2>ML Type</h2>
-        <p>
-            Supervised Learning - Classification & Natural Language Processing (NLP)
-        </p>
+        <div class="card">
+            <p>
+                Supervised Learning - Classification and Natural Language Processing (NLP)
+            </p>
+        </div>
 
         <h2>Inputs & Output</h2>
-        <p>
-            <strong>Inputs:</strong> User voice or text, conversation history, context, keywords.<br>
-            <strong>Output:</strong> Appropriate response or executed action (e.g., answering a question,
-            setting an alarm, opening an application).
-        </p>
+        <div class="card">
+            <p>
+                <span class="highlight">Inputs:</span> User voice or text, conversation history, context, keywords.
+                <br><br>
+                <span class="highlight">Output:</span> Appropriate response or executed action 
+                (e.g., answering a question, setting an alarm, opening an application).
+            </p>
+        </div>
 
         <h2>Relevance</h2>
-        <p>
-            This application enables systems like Siri or Google Assistant to interact naturally with users,
-            facilitating daily tasks, improving accessibility, and enhancing the overall user experience.
-        </p>
+        <div class="card">
+            <p>
+                This application enables virtual assistants to interact naturally with users, 
+                facilitating daily tasks, improving accessibility, and enhancing the user experience.
+            </p>
+        </div>
+
     </div>
 
 </body>
