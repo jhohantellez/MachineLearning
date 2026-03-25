@@ -1,22 +1,18 @@
 from flask import Flask, render_template, request
 import LinearRegression
 from LogisticRegression import pre_resultado
-from flask import Flask, render_template
+import joblib
+
+
 
 app= Flask(__name__)
+
+model = joblib.load("model.pkl")
 
 
 @app.route("/")
 def Home():
     return render_template('index.html')
-
-@app.route('/LinearRegression/',methods=["GET","POST"])
-def calculateGrade():
-    calculateResult= None
-    if request.method == "POST":
-        hours= float(request.form["hours"])
-        calculateResult= LinearRegression.calculateGrade(hours)
-    return render_template("linearRegressionGrades.html", result= calculateResult)
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
@@ -64,6 +60,20 @@ def UseCase4():
 @app.route("/linearregression/concepts")
 def concepts():
     return render_template("linear_regression/basic_concepts.html")
+
+@app.route("/linearregression/application", methods=["GET", "POST"])
+def linear_regression():
+    prediction = None
+
+    if request.method == "POST":
+        experience = float(request.form["experience"])
+        skills = float(request.form["skills"])
+        certifications = float(request.form["certifications"])
+
+
+        prediction = model.predict([[experience, skills, certifications]])[0]
+
+    return render_template("linear_regression/application.html", prediction=prediction)
 
 if __name__ == "__main__":
     app.run(debug=True)
