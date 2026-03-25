@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - ML App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f1117;
+            color: #e2e8f0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav {
+            background: #1a1d2e;
+            padding: 15px;
+        }
+
+        nav h2 {
+            color: #7c83f5;
+            margin: 0;
+        }
+
+        .container {
+            padding: 50px 20px;
+        }
+
+        h1 {
+            color: #7c83f5;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #1a1d2e;
+            border: 1px solid #2d3148;
+            border-radius: 10px;
+            padding: 20px;
+            width: 280px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #7c83f5;
+        }
+
+        .card h3 {
+            color: #7c83f5;
+        }
+
+        .card p {
+            color: #a0aec0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #7c83f5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background: #5a61d6;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2> Machine Learning App</h2>
+</nav>
+
+<div class="container">
+    <h1>Welcome</h1>
+    <p>Select a section to explore the project</p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3> Salary Predictor</h3>
+            <p>
+                Explore how linear regression predicts salaries based on data.
+            </p>
+            <a href="/linearregresion" class="btn">Go</a>
+        </div>
+
+        <div class="card">
+            <h3> Use Cases</h3>
+            <p>
+                Discover real-world Machine Learning applications and examples.
+            </p>
+            <a href="/usecases" class="btn">Go</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
