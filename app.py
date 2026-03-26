@@ -1,6 +1,4 @@
-
 from flask import Flask, render_template, request
-import joblib
 
 app= Flask(__name__)
 model = joblib.load("model.pkl")
@@ -30,6 +28,7 @@ def application():
         prediction = model.predict([[experience, skills, certifications]])[0]
 
     return render_template("linear_regression/application.html", prediction=prediction)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
