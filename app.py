@@ -11,7 +11,7 @@ def Home():
 
 @app.route("/usecases")
 def UseCase():
-    return render_template('index.html')
+    return render_template('usecases.html')
 
 #-----------------Use Cases-------------------------------------------
 @app.route("/UseCase/1")
@@ -30,9 +30,9 @@ def UseCase3():
 def UseCase4():
     return render_template("use_cases/use_case4.html")
 
-@app.route("/linearregresion")
+@app.route("/linearregression")
 def linearregression():
-    return render_template('index.html')
+    return render_template('linearregression.html')
 
 @app.route("/linearregression/concepts")
 def concepts():
