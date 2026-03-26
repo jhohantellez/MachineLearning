@@ -1,18 +1,24 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
 import joblib
 
 df = pd.read_csv("job_salary_prediction_dataset.csv", sep=";")
-
 df.columns = df.columns.str.strip()
 
-# variables
 X = df[['experience_years', 'skills_count', 'certifications']]
 y = df['salary']
 
-model = LinearRegression()
-model.fit(X, y)
 
-joblib.dump(model, "model.pkl")
+pipeline = Pipeline([
+    ('scaler', StandardScaler()),      
+    ('regressor', LinearRegression())  
+])
 
-print("Modelo reentrenado")
+
+pipeline.fit(X, y)
+
+joblib.dump(pipeline, "model.pkl")
+
+print("Modelo reentrenado con normalización")
