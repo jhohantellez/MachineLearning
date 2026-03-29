@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multinomial Naive Bayes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 40px;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #1a73e8;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #1a73e8;
+            padding-bottom: 5px;
+        }
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .formula {
+            background-color: #eef3ff;
+            padding: 15px;
+            border-left: 5px solid #1a73e8;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Multinomial Naive Bayes</h1>
+
+    <section>
+        <h2>What the Model Is</h2>
+        <p>
+            Multinomial Naive Bayes is a probabilistic classification algorithm based on Bayes' Theorem. 
+            It is mainly used for discrete data such as word counts in text classification problems. 
+            The model assumes that features are conditionally independent given the class.
+        </p>
+    </section>
+
+    <section>
+        <h2>How It Works (General Terms)</h2>
+        <p>
+            The model calculates the probability that a document belongs to a specific class by combining:
+        </p>
+        <ul>
+            <li>The prior probability of the class</li>
+            <li>The likelihood of the words appearing in that class</li>
+        </ul>
+        <p>
+            It multiplies the probabilities of each word (based on their frequency) and selects the class with the highest probability.
+        </p>
+    </section>
+
+    <section>
+        <h2>Mathematical Formula</h2>
+        <div class="formula">
+            P(Ck | d) ∝ P(Ck) * ∏ P(xi | Ck)^fi
+        </div>
+
+        <p><strong>Where:</strong></p>
+        <ul>
+            <li><strong>P(Ck)</strong>: Prior probability of class Ck</li>
+            <li><strong>xi</strong>: Word (feature)</li>
+            <li><strong>fi</strong>: Frequency of word xi in the document</li>
+            <li><strong>P(xi | Ck)</strong>: Probability of word given the class</li>
+        </ul>
+
+        <p><strong>Likelihood with Laplace smoothing:</strong></p>
+        <div class="formula">
+            P(xi | Ck) = (Nik + α) / (Nk + α * |V|)
+        </div>
+
+        <ul>
+            <li><strong>Nik</strong>: Count of word xi in class Ck</li>
+            <li><strong>Nk</strong>: Total number of words in class Ck</li>
+            <li><strong>|V|</strong>: Vocabulary size</li>
+            <li><strong>α</strong>: Smoothing parameter (usually 1)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Main Characteristics</h2>
+        <ul>
+            <li>Uses frequency of words (bag-of-words model)</li>
+            <li>Assumes independence between features</li>
+            <li>Works with discrete data</li>
+            <li>Applies Laplace smoothing to avoid zero probabilities</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Advantages and Limitations</h2>
+        <h3>Advantages</h3>
+        <ul>
+            <li>Simple and fast</li>
+            <li>Efficient with large text datasets</li>
+            <li>Good baseline model for classification</li>
+        </ul>
+
+        <h3>Limitations</h3>
+        <ul>
+            <li>Strong independence assumption (not always realistic)</li>
+            <li>Ignores word order and context</li>
+            <li>Not ideal for continuous data</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Type of Classification Problems</h2>
+        <ul>
+            <li>Email spam detection</li>
+            <li>Sentiment analysis</li>
+            <li>News categorization</li>
+            <li>Document classification</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Real-World Use Example</h2>
+        <p>
+            In email spam filtering, the model analyzes the frequency of words such as "free", "offer", or "win". 
+            Based on training data, it calculates probabilities and determines whether a new email is spam or not.
+        </p>
+    </section>
+
+</body>
+</html>
