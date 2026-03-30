@@ -1,14 +1,18 @@
 from flask import Flask, render_template, request
 import joblib
+# Importamos la lógica de entrenamiento desde tu archivo secundario
+from train_multinominal import get_trained_model
 
 app = Flask(__name__)
-model = joblib.load("model.pkl")
+
+model_lr = joblib.load("model.pkl")
+model_lr = joblib.load("model.pkl")
+model_nb, vectorizer_nb, nb_metrics = get_trained_model()
 
 #-------------------- HOME --------------------
 @app.route("/")
 def home():
     return render_template('home.html')
-
 
 #-------------------- USE CASES --------------------
 @app.route("/usecases")
@@ -31,7 +35,6 @@ def usecase3():
 def usecase4():
     return render_template("use_cases/use_case4.html")
 
-
 #-------------------- LINEAR REGRESSION --------------------
 @app.route("/linearregression")
 def linearregression():
@@ -44,36 +47,39 @@ def concepts():
 @app.route("/linearregression/application", methods=["GET", "POST"])
 def application():
     prediction = None
-
     if request.method == "POST":
         experience = float(request.form["experience"])
         skills = float(request.form["skills"])
         certifications = float(request.form["certifications"])
-
-        prediction = model.predict([[experience, skills, certifications]])[0]
-
+        if model_lr:
+            prediction = model_lr.predict([[experience, skills, certifications]])[0]
     return render_template("linear_regression/application.html", prediction=prediction)
 
-
 #-------------------- MULTINOMIAL NAIVE BAYES --------------------
-#-------------------- MULTINOMIAL MENU --------------------
 @app.route("/multinomial")
 def multinomial_menu():
     return render_template("multinomial_nb.html")
 
-
-#-------------------- MULTINOMIAL CONCEPTS --------------------
 @app.route("/multinomial/concepts")
 def multinomial_concepts():
     return render_template("MultinomialNB/Basic_conceptsnb.html")
 
-
-#-------------------- MULTINOMIAL APPLICATION --------------------
-@app.route("/multinomial/application")
+@app.route("/multinomial/application", methods=["GET", "POST"])
 def multinomial_application():
-    return render_template("MultinomialNB/Applicationnb.html")
+    prediction = None
+    original_text = None
+    
+    if request.method == "POST":
+        message = request.form['message']
+        original_text = message
+        
+        vect = vectorizer_nb.transform([message])
+        prediction_num = model_nb.predict(vect)[0]
+        
+        prediction = "SPAM DETECTED! " if prediction_num == 1 else "Legitimate Message (HAM) ✅"
+    
+    return render_template("MultinomialNB/Applicationnb.html", metrics=nb_metrics,  prediction=prediction, original_text=original_text)
+
 #-------------------- RUN --------------------
 if __name__ == "__main__":
     app.run(debug=True)
-
-print(app.url_map)
