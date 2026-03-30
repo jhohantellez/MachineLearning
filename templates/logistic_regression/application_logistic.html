@@ -57,7 +57,6 @@
             <button class="btn btn-primary w-100">Predict Loan Approval</button>
         </form>
 
-        <!-- RESULT -->
         {% if prediction is not none %}
         <div class="alert mt-4 text-center 
             {% if "Approved" in prediction %}alert-success{% else %}alert-danger{% endif %}">
@@ -67,20 +66,17 @@
             <small>Probability: {{ probability }}</small>
         </div>
 
-        <!-- GRÁFICAS -->
         <div class="mt-5">
             <h3 class="text-center mb-4">Model Performance</h3>
 
             <div class="row">
                 
-                <!-- Confusion Matrix -->
                 <div class="col-md-6 text-center">
                     <h5>Confusion Matrix</h5>
                     <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" 
                          class="img-fluid rounded shadow">
                 </div>
 
-                <!-- ROC Curve -->
                 <div class="col-md-6 text-center">
                     <h5>ROC Curve</h5>
                     <img src="{{ url_for('static', filename='images/roc_curve.png') }}" 
