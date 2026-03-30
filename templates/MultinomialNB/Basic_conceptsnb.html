@@ -3,139 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <title>Multinomial Naive Bayes</title>
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
-            margin: 40px;
-            background-color: #f4f6f8;
-            color: #333;
+            margin: 0;
+            background: linear-gradient(135deg, #0a192f, #112240);
+            color: #000;
         }
+
+        nav {
+            background: #0a192f;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #1e3a5f;
+        }
+
+        nav h2 {
+            color: #64b5f6;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
         h1 {
             text-align: center;
-            color: #1a73e8;
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #1a73e8;
-            padding-bottom: 5px;
-        }
-        section {
-            background: white;
-            padding: 20px;
+            color: #90caf9;
             margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            font-size: 2.5em;
         }
+
+        /* Imagen */
+        .image-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .image-container img {
+            width: 80%;
+            max-width: 650px;
+            border-radius: 10px;
+            border: 1px solid #dbe2ef;
+        }
+
+        .image-caption {
+            font-size: 0.9em;
+            color: #bbb;
+            margin-top: 8px;
+        }
+
+        section {
+            background: #ffffff;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            border: 1px solid #dbe2ef;
+        }
+
+        h2 {
+            color: #1565c0;
+            border-left: 5px solid #42a5f5;
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: #1e88e5;
+        }
+
+        p {
+            color: #333;
+        }
+
         ul {
             margin-left: 20px;
         }
-        .formula {
-            background-color: #eef3ff;
-            padding: 15px;
-            border-left: 5px solid #1a73e8;
-            font-family: monospace;
-            overflow-x: auto;
+
+        li {
+            margin-bottom: 8px;
         }
+
+        .formula {
+            background: #e3f2fd;
+            padding: 15px;
+            border-left: 5px solid #1e88e5;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 1.05em;
+        }
+
+        .highlight {
+            color: #1565c0;
+            font-weight: bold;
+        }
+
     </style>
 </head>
+
 <body>
 
+<nav>
+    <h2>Machine Learning App</h2>
+</nav>
+
+<div class="container">
+
     <h1>Multinomial Naive Bayes</h1>
+
+    <!-- Imagen -->
+    <div class="image-container">
+        <img src="https://miro.medium.com/v2/0*N8SKm3kG2vxKY-Ur.jpg" alt="Multinomial Naive Bayes Diagram">
+        <p class="image-caption">Multinomial Naive Bayes model visualization</p>
+    </div>
 
     <section>
         <h2>What the Model Is</h2>
         <p>
-            Multinomial Naive Bayes is a probabilistic classification algorithm based on Bayes' Theorem. 
-            It is mainly used for discrete data such as word counts in text classification problems. 
-            The model assumes that features are conditionally independent given the class.
+            Multinomial Naive Bayes is a probabilistic classification algorithm based on 
+            <span class="highlight">Bayes' Theorem</span>. It is designed for discrete data, 
+            especially word counts in text classification tasks.
         </p>
     </section>
 
     <section>
-        <h2>How It Works (General Terms)</h2>
+        <h2>How It Works</h2>
         <p>
-            The model calculates the probability that a document belongs to a specific class by combining:
+            The model estimates the probability that a document belongs to a class by combining:
         </p>
         <ul>
-            <li>The prior probability of the class</li>
-            <li>The likelihood of the words appearing in that class</li>
+            <li>Prior probability of the class</li>
+            <li>Likelihood of each word appearing in that class</li>
         </ul>
         <p>
-            It multiplies the probabilities of each word (based on their frequency) and selects the class with the highest probability.
+            It multiplies all probabilities and selects the class with the highest score.
         </p>
     </section>
 
     <section>
         <h2>Mathematical Formula</h2>
+
         <div class="formula">
-            P(Ck | d) ∝ P(Ck) * ∏ P(xi | Ck)^fi
+            P(Ck | d) ∝ P(Ck) × ∏ P(xi | Ck)^fi
         </div>
 
         <p><strong>Where:</strong></p>
         <ul>
-            <li><strong>P(Ck)</strong>: Prior probability of class Ck</li>
-            <li><strong>xi</strong>: Word (feature)</li>
-            <li><strong>fi</strong>: Frequency of word xi in the document</li>
-            <li><strong>P(xi | Ck)</strong>: Probability of word given the class</li>
+            <li><span class="highlight">P(Ck)</span>: Prior probability</li>
+            <li><span class="highlight">xi</span>: Word (feature)</li>
+            <li><span class="highlight">fi</span>: Frequency</li>
+            <li><span class="highlight">P(xi | Ck)</span>: Likelihood</li>
         </ul>
 
-        <p><strong>Likelihood with Laplace smoothing:</strong></p>
+        <h3>Laplace Smoothing</h3>
+
         <div class="formula">
-            P(xi | Ck) = (Nik + α) / (Nk + α * |V|)
+            P(xi | Ck) = (Nik + α) / (Nk + α × |V|)
         </div>
-
-        <ul>
-            <li><strong>Nik</strong>: Count of word xi in class Ck</li>
-            <li><strong>Nk</strong>: Total number of words in class Ck</li>
-            <li><strong>|V|</strong>: Vocabulary size</li>
-            <li><strong>α</strong>: Smoothing parameter (usually 1)</li>
-        </ul>
     </section>
 
     <section>
         <h2>Main Characteristics</h2>
         <ul>
-            <li>Uses frequency of words (bag-of-words model)</li>
+            <li>Uses word frequency (bag-of-words)</li>
             <li>Assumes independence between features</li>
             <li>Works with discrete data</li>
-            <li>Applies Laplace smoothing to avoid zero probabilities</li>
+            <li>Applies Laplace smoothing</li>
         </ul>
     </section>
 
     <section>
-        <h2>Advantages and Limitations</h2>
+        <h2>Advantages & Limitations</h2>
+
         <h3>Advantages</h3>
         <ul>
-            <li>Simple and fast</li>
-            <li>Efficient with large text datasets</li>
-            <li>Good baseline model for classification</li>
+            <li>Fast and simple</li>
+            <li>Efficient with large datasets</li>
+            <li>Excellent for text classification</li>
         </ul>
 
         <h3>Limitations</h3>
         <ul>
-            <li>Strong independence assumption (not always realistic)</li>
-            <li>Ignores word order and context</li>
-            <li>Not ideal for continuous data</li>
+            <li>Strong independence assumption</li>
+            <li>Ignores word order</li>
+            <li>Not ideal for continuous variables</li>
         </ul>
     </section>
 
     <section>
-        <h2>Type of Classification Problems</h2>
+        <h2>Applications</h2>
         <ul>
-            <li>Email spam detection</li>
+            <li>Spam detection</li>
             <li>Sentiment analysis</li>
-            <li>News categorization</li>
             <li>Document classification</li>
         </ul>
     </section>
 
     <section>
-        <h2>Real-World Use Example</h2>
+        <h2>Real-World Example</h2>
+        <h3>Gmail Spam Filter</h3>
         <p>
-            In email spam filtering, the model analyzes the frequency of words such as "free", "offer", or "win". 
-            Based on training data, it calculates probabilities and determines whether a new email is spam or not.
+            Emails are analyzed based on word frequencies. Words like 
+            <span class="highlight">"free"</span> or 
+            <span class="highlight">"winner"</span> increase spam probability, 
+            while words like 
+            <span class="highlight">"meeting"</span> or 
+            <span class="highlight">"invoice"</span> decrease it.
         </p>
     </section>
+
+</div>
 
 </body>
 </html>
