@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logistic Regression</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4">
+        <h1 class="text-center mb-4">Logistic Regression</h1>
+
+        <!-- What is Logistic Regression -->
+        <div class="mb-4">
+            <h3>What is Logistic Regression?</h3>
+            <p>
+                Logistic regression is a supervised Machine Learning algorithm used for classification tasks.
+                Unlike linear regression, which predicts continuous values, logistic regression predicts probabilities
+                that an input belongs to a specific class. These probabilities are then converted into discrete outcomes
+                such as 0 or 1.
+            </p>
+            <p>
+                It is widely used in real-world applications where decisions must be made between two or more categories,
+                such as loan approval, disease detection, or fraud identification.
+            </p>
+        </div>
+
+        <!-- Difference -->
+        <div class="mb-4">
+            <h3>Difference Between Regression and Classification</h3>
+            <ul>
+                <li><strong>Regression:</strong> predicts continuous numerical values (e.g., salary, house price).</li>
+                <li><strong>Classification:</strong> predicts categories or class labels (e.g., approved/rejected).</li>
+            </ul>
+            <p>
+                Logistic regression is called "regression" because it models probabilities using a regression-like equation,
+                but its final output is used for classification.
+            </p>
+        </div>
+
+        <!-- Binary Classification -->
+        <div class="mb-4">
+            <h3>Binary Classification</h3>
+            <p>
+                Binary classification refers to problems where there are only two possible outcomes.
+                Logistic regression is most commonly used in this scenario, where:
+            </p>
+            <ul>
+                <li>0 → Negative class (e.g., loan not approved)</li>
+                <li>1 → Positive class (e.g., loan approved)</li>
+            </ul>
+        </div>
+
+        <!-- Target -->
+        <div class="mb-4">
+            <h3>Target Variable / Class Label</h3>
+            <p>
+                The target variable is the output that the model is trying to predict. In classification problems,
+                this is called the class label. It represents the final decision or category.
+            </p>
+            <p>
+                In this project:
+                <br><strong>Loan_Approved = 1</strong> → Approved<br>
+                <strong>Loan_Approved = 0</strong> → Not Approved
+            </p>
+        </div>
+
+        <!-- Features -->
+        <div class="mb-4">
+            <h3>Features / Predictors</h3>
+            <p>
+                Features are the input variables used by the model to make predictions. These variables contain
+                the information that helps the model learn patterns in the data.
+            </p>
+            <ul>
+                <li>Age</li>
+                <li>Income</li>
+                <li>Credit Score</li>
+                <li>Loan Amount</li>
+                <li>Loan Term</li>
+                <li>Employment Status</li>
+            </ul>
+        </div>
+
+        <!-- Probability -->
+        <div class="mb-4">
+            <h3>Probability Estimation</h3>
+            <p>
+                Logistic regression uses the sigmoid function to transform any real-valued number into a value
+                between 0 and 1, which represents a probability.
+            </p>
+            <div class="alert alert-primary text-center">
+                <strong>p = 1 / (1 + e<sup>-(mx + b)</sup>)</strong>
+            </div>
+            <p>
+                The output probability indicates how likely it is that a given input belongs to the positive class.
+            </p>
+        </div>
+
+        <!-- Decision Boundary -->
+        <div class="mb-4">
+            <h3>Decision Boundary</h3>
+            <p>
+                The decision boundary is the point where the model separates different classes.
+                It defines the limit between predicting one class or another.
+            </p>
+            <p>
+                In logistic regression, this boundary is typically based on a probability threshold.
+            </p>
+        </div>
+
+        <!-- Threshold -->
+        <div class="mb-4">
+            <h3>Classification Threshold</h3>
+            <p>
+                The classification threshold is used to convert predicted probabilities into class labels.
+            </p>
+            <ul>
+                <li>If probability ≥ 0.5 → Class = 1</li>
+                <li>If probability &lt; 0.5 → Class = 0</li>
+            </ul>
+            <p>
+                This threshold can be adjusted depending on the problem. For example, in financial applications,
+                a higher threshold may be used to reduce risk.
+            </p>
+        </div>
+
+        <!-- Real Example -->
+        <div class="mb-4">
+            <h3>Real-World Application</h3>
+            <p>
+                In this project, logistic regression is used to predict whether a loan will be approved based on
+                applicant information such as income, credit score, and employment status.
+            </p>
+            <p>
+                The model analyzes patterns in historical data and estimates the probability of approval,
+                helping decision-making in financial systems.
+            </p>
+        </div>
+
+        <!-- Interpretation -->
+        <div class="mb-4">
+            <h3>Interpretation of Results</h3>
+            <p>
+                The model achieved a high performance with strong classification metrics. The ROC curve shows
+                an AUC close to 1, indicating excellent discrimination between classes.
+            </p>
+            <p>
+                The confusion matrix reveals that most predictions are correct, with very few false positives
+                and some false negatives. This means the model is reliable but slightly conservative,
+                prioritizing safety in decision-making.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
