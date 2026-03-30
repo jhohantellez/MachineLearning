@@ -30,7 +30,7 @@ def get_trained_model():
 
     plt.figure(figsize=(6,4))
     sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, fmt='d', cmap='Blues')
-    plt.savefig('static/images/confusion_matrix.png')
+    plt.savefig('static/images/confusion_matrix_nb.png')
     plt.close()
 
     fpr, tpr, _ = roc_curve(y_test, y_prob)
@@ -45,7 +45,7 @@ def get_trained_model():
     plt.figure(figsize=(6,4))
     plt.plot(fpr, tpr, label=f"AUC = {metrics['auc']}")
     plt.plot([0, 1], [0, 1], '--')
-    plt.savefig('static/images/roc_curve.png')
+    plt.savefig('static/images/roc_curve_nb.png')
     plt.close()
 
     return model, vectorizer, metrics
