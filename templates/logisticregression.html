@@ -1,96 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ML Classification Predictor</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Classification Predictor — Logistic Regression</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f1117;
-            color: #e2e8f0;
-            margin: 0;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
 
-        nav {
-            background: #1a1d2e;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        nav a {
-            color: #a0aec0;
-            text-decoration: none;
-            margin-left: 15px;
-        }
-
-        nav a:hover {
-            color: white;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #7c83f5;
-        }
-
-        p {
-            color: #a0aec0;
-        }
-
-        img {
-            width: 100%;
-            max-width: 500px;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
-
-        .box {
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px solid #2d3148;
-            border-radius: 10px;
-            background: #1a1d2e;
-        }
-    </style>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/home.css">
 </head>
 
-<body>
+<body class="regression-page">
 
+<!-- NAV -->
 <nav>
-    <div><strong style="color:#7c83f5;"> ML Classification Predictor</strong></div>
-    <div>
-        <a href="/">Home</a>
-        <a href="/logisticregression/concepts">Concepts</a>
-        <a href="/logisticregression/application">Application</a>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 18 18" fill="none">
+        <path d="M2 14L7 8l3 3 6-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
+    <span class="nav-logo-text">ML App</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/logisticregression/concepts">Concepts</a></li>
+    <li><a href="/logisticregression/application" style="color: var(--blue-bright);">Application</a></li>
+  </ul>
 </nav>
 
-<div class="container">
-    <h1>Welcome</h1>
-    <p>
-        This project demonstrates how Machine Learning can be used to classify data
-        into categories, such as predicting outcomes like success/failure or yes/no.
-    </p>
+<!-- HERO -->
+<section class="hero" style="padding-bottom: 2rem;">
+  <div class="hero-badge">Supervised Learning</div>
+  <h1>Classification <span>Predictor</span></h1>
+  <p class="hero-desc">
+    Predict outcomes using Logistic Regression by estimating probabilities and classifying data into categories.
+  </p>
+</section>
 
-    <img src="{{ url_for('static', filename='images/image.png') }}">
+<!-- INTRO -->
+<section id="classification-intro">
+  <div class="section-wrap">
 
-    <div class="box">
-        <h2>About</h2>
+    <div class="two-col">
+      
+      <div class="left">
+        <div class="section-tag">Project Overview</div>
+        <h2 class="section-title">Understanding Logistic Regression</h2>
+
         <p>
-            Using logistic regression, this application analyzes input data and predicts
-            the probability of a specific class. It helps understand how classification
-            models make decisions based on patterns in data.
+          Logistic Regression is a classification algorithm used to predict the probability
+          that a data point belongs to a certain class.
         </p>
+
+        <p>
+          Instead of predicting continuous values, it outputs probabilities using the
+          <strong>sigmoid function</strong>.
+        </p>
+
+        <div class="info-box">
+          <p>
+            <strong>Key idea:</strong> The model transforms a linear combination of inputs
+            into a probability between 0 and 1, then applies a threshold to classify.
+          </p>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="concept-card" style="padding: 0; overflow: hidden; border-radius: 16px;">
+          <img src="{{ url_for('static', filename='images/image.png') }}" style="width:100%; display:block;">
+        </div>
+      </div>
+
     </div>
-</div>
+
+    <!-- CONCEPTS -->
+    <div class="concepts-grid" style="margin-top: 4rem;">
+
+      <div class="concept-card">
+        <h3>Sigmoid Function</h3>
+        <p>
+          Maps any real value into a probability between 0 and 1 using:
+          σ(x) = 1 / (1 + e⁻ˣ)
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h3>Probability Output</h3>
+        <p>
+          The model predicts the likelihood of belonging to class 1 instead of a raw value.
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h3>Decision Threshold</h3>
+        <p>
+          A cutoff (usually 0.5) is used to convert probabilities into final class labels.
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h3>Log Loss</h3>
+        <p>
+          Measures classification error. Penalizes confident wrong predictions heavily.
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h3>Binary Classification</h3>
+        <p>
+          Used for problems with two outcomes such as yes/no, spam/not spam.
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h3>Model Interpretation</h3>
+        <p>
+          Coefficients indicate how each feature influences the probability of the outcome.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 <span>ML App</span> — Systems Engineering Project</p>
+  </div>
+</footer>
 
 </body>
 </html>

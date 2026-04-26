@@ -1,95 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ML Salary Predictor</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salary Predictor — Linear Regression</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f1117;
-            color: #e2e8f0;
-            margin: 0;
-        }
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/home.css"> </head>
 
-        nav {
-            background: #1a1d2e;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        nav a {
-            color: #a0aec0;
-            text-decoration: none;
-            margin-left: 15px;
-        }
-
-        nav a:hover {
-            color: white;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #7c83f5;
-        }
-
-        p {
-            color: #a0aec0;
-        }
-
-        img {
-            width: 100%;
-            max-width: 500px;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
-
-        .box {
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px solid #2d3148;
-            border-radius: 10px;
-            background: #1a1d2e;
-        }
-    </style>
-</head>
-
-<body>
+<body class="regression-page">
 
 <nav>
-    <div><strong style="color:#7c83f5;">⚡ ML Salary Predictor</strong></div>
-    <div>
-        <a href="/">Home</a>
-        <a href="/linearregression/concepts">Concepts</a>
-        <a href="/linearregression/application">Application</a>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 18 18" fill="none"><path d="M2 14L7 8l3 3 6-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
+    <span class="nav-logo-text">ML App</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/linearregression/concepts">Concepts</a></li>
+    <li><a href="/linearregression/application" style="color: var(--blue-bright);">Application</a></li>
+  </ul>
 </nav>
 
-<div class="container">
-    <h1>Welcome</h1>
-    <p>
-        This project shows how Machine Learning can be used to predict salaries 
-        based on data like experience and skills.
-    </p>
+<section class="hero" style="padding-bottom: 2rem;">
+  <div class="hero-badge">Supervised Learning</div>
+  <h1>Salary <span>Predictor</span></h1>
+  <p class="hero-desc">Predicting professional compensation through Linear Regression models. Analyze how variables like years of experience and specialized skills correlate with salary growth.</p>
+</section>
 
-    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Machine Learning">
+<section id="regression-intro">
+  <div class="section-wrap">
+    <div class="two-col">
+      <div class="left">
+        <div class="section-tag">Project Overview</div>
+        <h2 class="section-title">Data-Driven Salary Forecasting</h2>
+        <p>This implementation demonstrates how <strong>Linear Regression</strong> identifies the linear relationship between independent features (experience) and a dependent continuous variable (salary).</p>
+        
+        <div class="info-box">
+          <p><strong>Methodology:</strong> We utilize Ordinary Least Squares (OLS) to minimize the sum of squared residuals, ensuring the highest possible accuracy for our predictive line.</p>
+        </div>
+      </div>
 
-    <div class="box">
-        <h2>About</h2>
-        <p>
-            Using linear regression, this application analyzes data and generates
-            predictions. It helps understand how models learn from data and make decisions.
-        </p>
+      <div class="right">
+        <div class="concept-card" style="padding: 0; overflow: hidden; border-radius: 16px;">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Machine Learning Analytics" style="width: 100%; display: block; filter: saturate(1.2);">
+        </div>
+      </div>
     </div>
-</div>
+
+    <div class="concepts-grid" style="margin-top: 4rem;">
+      <div class="concept-card">
+        <h3>Feature Set</h3>
+        <p>Years of experience, technical certifications, and role seniority.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Model Type</h3>
+        <p>Simple & Multiple Linear Regression (Scikit-Learn implementation).</p>
+      </div>
+      <div class="concept-card">
+        <h3>Objective</h3>
+        <p>Reducing Mean Squared Error (MSE) to refine prediction reliability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 <span>ML App</span> — Systems Engineering Project</p>
+  </div>
+</footer>
 
 </body>
 </html>
