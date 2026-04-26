@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import joblib
 from train_multinominal import get_trained_model
+import Clustering
 
 app = Flask(__name__)
 
@@ -116,6 +117,11 @@ def multinomial_application():
         prediction = "SPAM DETECTED! " if prediction_num == 1 else "Legitimate Message (HAM)"
     
     return render_template("MultinomialNB/Applicationnb.html", metrics=nb_metrics,  prediction=prediction, original_text=original_text)
+
+@app.route("/clustering")
+def clustering():
+    info = Clustering.AppClusteringKmeans()
+    return str(info["centers"]) 
 
 #-------------------- RUN --------------------
 if __name__ == "__main__":
