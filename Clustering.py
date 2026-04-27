@@ -1,42 +1,47 @@
+import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
 def getDataSet():
-    return [{"nombre": "Ana", "edad": 22, "ingresos": 1200, "gasto": 300},
-        {"nombre": "Luis", "edad": 25, "ingresos": 1500, "gasto": 350},
-        {"nombre": "Carlos", "edad": 23, "ingresos": 1300, "gasto": 280},
-        {"nombre": "Marta", "edad": 45, "ingresos": 4000, "gasto": 1200},
-        {"nombre": "Sofía", "edad": 50, "ingresos": 4200, "gasto": 1400},
-        {"nombre": "Jorge", "edad": 47, "ingresos": 3900, "gasto": 1100},
-        {"nombre": "Elena", "edad": 31, "ingresos": 2500, "gasto": 700},
-        {"nombre": "Pedro", "edad": 33, "ingresos": 2700, "gasto": 750},
-        {"nombre": "Laura", "edad": 29, "ingresos": 2400, "gasto": 680},
-        {"nombre": "Andrés", "edad": 52, "ingresos": 5000, "gasto": 1600},
-        {"nombre": "Camila", "edad": 21, "ingresos": 1100, "gasto": 250},
-        {"nombre": "Diego", "edad": 38, "ingresos": 3200, "gasto": 900}]
+    df = pd.read_csv("BankChurners.csv")
 
-def AppClusteringKmeans():
-    data = getDataSet()
-    x = [[person["edad"], person["ingresos"], person["gasto"]] for person in data]
+    df = df[[
+        "Customer_Age",
+        "Credit_Limit",
+        "Total_Trans_Amt",
+        "Total_Trans_Ct"
+    ]]
+
+    df = df.dropna()
+
+    return df
+
+
+def AppClusteringKmeans(k=3):
+    df = getDataSet()
+
+    X = df.values
+
     scaler = StandardScaler()
-    xScaled = scaler.fit_transform(x)
-    model = KMeans(n_clusters=3, random_state=42, n_init=10)
-    Labels = model.fit_predict(xScaled)
-    result = []
-    for i, person in enumerate(data):
-        row= person.copy()
-        row["cluster"] = int(Labels[i])
-        result.append(row)
-    summaryClusters = {}
+    X_scaled = scaler.fit_transform(X)
 
-    for label in Labels:
+    model = KMeans(n_clusters=k, random_state=42, n_init=10)
+    labels = model.fit_predict(X_scaled)
+    print(set(labels))
+
+    df["cluster"] = labels
+
+    results = df.to_dict(orient="records")
+
+    summary = {}
+    for label in labels:
         label = int(label)
-        summaryClusters[label] = summaryClusters.get(label, 0) + 1
+        summary[label] = summary.get(label, 0) + 1
 
     centers = model.cluster_centers_.tolist()
-    
+
     return {
-        "results": result,
-        "summary": summaryClusters,
+        "results": results[:50],
+        "summary": summary,
         "centers": centers
     }

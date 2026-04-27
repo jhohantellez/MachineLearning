@@ -130,9 +130,22 @@ def clustering_concepts():
 
 @app.route("/clustering/application")
 def clustering_application():
-    info = Clustering.AppClusteringKmeans()
+    k = request.args.get("k", default=3, type=int)
+
+    info = Clustering.AppClusteringKmeans(k)
+
     centers = info["centers"]
-    return render_template("clustering/application_clustering.html", centers=enumerate(centers))
+    centers = [[round(value, 2) for value in center] for center in centers]
+    summary = info["summary"]
+    results = info["results"]
+
+    return render_template(
+        "clustering/application_clustering.html",
+        centers=enumerate(centers),
+        summary=summary,
+        results=results,
+        k=k
+    )
 #-------------------- RUN --------------------
 if __name__ == "__main__":
     app.run(debug=True)
