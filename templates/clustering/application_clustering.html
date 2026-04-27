@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K-Means Application — Clustering</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/home.css">
+
+  <style>
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .results-table thead tr {
+      background: var(--blue-bright, #3b82f6);
+      color: #fff;
+    }
+
+    .results-table th,
+    .results-table td {
+      padding: 1rem 1.25rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .results-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .results-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .cluster-badge {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      background: rgba(59,130,246,0.15);
+      color: var(--blue-bright, #3b82f6);
+    }
+  </style>
+</head>
+
+<body class="regression-page">
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 18 18" fill="none"><path d="M2 14L7 8l3 3 6-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <span class="nav-logo-text">ML App</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/clustering">Overview</a></li>
+    <li><a href="/clustering/concepts">Concepts</a></li>
+    <li><a href="/clustering/application" style="color: var(--blue-bright);">Application</a></li>
+  </ul>
+</nav>
+
+<section class="hero" style="padding-bottom: 2rem;">
+  <div class="hero-badge">Unsupervised Learning</div>
+  <h1>Cluster <span>Results</span></h1>
+  <p class="hero-desc">K-Means has partitioned the dataset into distinct groups. Below are the centroids — the central point of each discovered cluster.</p>
+</section>
+
+<section id="regression-intro">
+  <div class="section-wrap">
+
+    <div class="section-tag">Model Output</div>
+    <h2 class="section-title">Cluster Centroids</h2>
+    <p>Each row represents the <strong>centroid</strong> of a cluster — the average values of all data points assigned to that group.</p>
+
+    <div class="concept-card" style="margin-top: 2rem; overflow-x: auto;">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Cluster</th>
+            <th>Feature 1</th>
+            <th>Feature 2</th>
+            <th>Feature 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i, center in centers %}
+          <tr>
+            <td><span class="cluster-badge">Cluster {{ i + 1 }}</span></td>
+            {% for value in center %}
+            <td>{{ "%.4f" | format(value) }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="concepts-grid" style="margin-top: 3rem;">
+      <div class="concept-card">
+        <h3>What are Centroids?</h3>
+        <p>The centroid is the geometric center of a cluster — calculated as the mean of all points assigned to it.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Interpreting Values</h3>
+        <p>Positive values indicate above-average features; negative values indicate below-average. The further from zero, the more distinct the cluster.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Cluster Count</h3>
+        <p>This model identified <strong>{{ centers | list | length }}</strong> clusters within the dataset, each representing a distinct group pattern.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 <span>ML App</span> — Systems Engineering Project</p>
+  </div>
+</footer>
+
+</body>
+</html>

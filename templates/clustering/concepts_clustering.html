@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K-Means Concepts — Clustering</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/home.css">
+</head>
+
+<body class="regression-page">
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 18 18" fill="none"><path d="M2 14L7 8l3 3 6-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <span class="nav-logo-text">ML App</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/clustering">Overview</a></li>
+    <li><a href="/clustering/concepts" style="color: var(--blue-bright);">Concepts</a></li>
+    <li><a href="/clustering/application">Application</a></li>
+  </ul>
+</nav>
+
+<section class="hero" style="padding-bottom: 2rem;">
+  <div class="hero-badge">Unsupervised Learning</div>
+  <h1>K-Means <span>Concepts</span></h1>
+  <p class="hero-desc">Understanding the theory and mathematics behind the K-Means clustering algorithm.</p>
+</section>
+
+<section id="regression-intro">
+  <div class="section-wrap">
+
+    <div class="two-col">
+      <div class="left">
+        <div class="section-tag">Core Idea</div>
+        <h2 class="section-title">What is K-Means?</h2>
+        <p>K-Means is an <strong>unsupervised learning</strong> algorithm that groups data into K clusters. Unlike supervised learning, it works without labeled data — it finds structure on its own.</p>
+        <div class="info-box">
+          <p><strong>Key insight:</strong> Each cluster is represented by its <strong>centroid</strong> — the average position of all points belonging to that group.</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="concept-card">
+          <h3>Algorithm Steps</h3>
+          <p><strong>1.</strong> Choose K (number of clusters).</p>
+          <p><strong>2.</strong> Randomly initialize K centroids.</p>
+          <p><strong>3.</strong> Assign each point to the nearest centroid.</p>
+          <p><strong>4.</strong> Recalculate centroids as the mean of assigned points.</p>
+          <p><strong>5.</strong> Repeat steps 3–4 until convergence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="concepts-grid" style="margin-top: 4rem;">
+      <div class="concept-card">
+        <h3>Distance Metric</h3>
+        <p>Uses <strong>Euclidean distance</strong> to measure how close a point is to each centroid. The point is assigned to the cluster with the smallest distance.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Inertia</h3>
+        <p>The sum of squared distances from each point to its centroid. A lower inertia means more compact and well-separated clusters.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Elbow Method</h3>
+        <p>A technique to choose the optimal K by plotting inertia vs. number of clusters and finding the "elbow" where improvement slows down.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Centroids</h3>
+        <p>The center of each cluster. After convergence, each centroid represents the "average profile" of all data points in its group.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Convergence</h3>
+        <p>The algorithm stops when centroids no longer move significantly between iterations, meaning the clusters have stabilized.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Limitations</h3>
+        <p>K-Means assumes spherical clusters and requires K to be defined upfront. It is sensitive to outliers and initial centroid placement.</p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="/clustering/application" class="btn-primary" style="display: inline-block; padding: 0.85rem 2rem; background: var(--blue-bright); color: #fff; border-radius: 10px; font-weight: 600; text-decoration: none;">Try the Application →</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 <span>ML App</span> — Systems Engineering Project</p>
+  </div>
+</footer>
+
+</body>
+</html>

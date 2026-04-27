@@ -118,11 +118,21 @@ def multinomial_application():
     
     return render_template("MultinomialNB/Applicationnb.html", metrics=nb_metrics,  prediction=prediction, original_text=original_text)
 
+
+#-------------------- CLUSTERING --------------------
 @app.route("/clustering")
 def clustering():
-    info = Clustering.AppClusteringKmeans()
-    return str(info["centers"]) 
+    return render_template("clustering.html")
 
+@app.route("/clustering/concepts")
+def clustering_concepts():
+    return render_template("clustering/concepts_clustering.html")
+
+@app.route("/clustering/application")
+def clustering_application():
+    info = Clustering.AppClusteringKmeans()
+    centers = info["centers"]
+    return render_template("clustering/application_clustering.html", centers=enumerate(centers))
 #-------------------- RUN --------------------
 if __name__ == "__main__":
     app.run(debug=True)
