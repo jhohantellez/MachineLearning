@@ -11,6 +11,98 @@
   <link rel="stylesheet" href="/static/css/layout.css">
   <link rel="stylesheet" href="/static/css/components.css">
   <link rel="stylesheet" href="/static/css/home.css">
+
+  <style>
+    .topic-section {
+      margin-bottom: 4rem;
+    }
+
+    .topic-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      opacity: 0.07;
+      line-height: 1;
+      margin-bottom: -1.5rem;
+    }
+
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .step-num {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--blue-bright, #3b82f6);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .app-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .app-card .app-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .app-card h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .app-card p {
+      font-size: 0.8rem;
+      opacity: 0.6;
+      margin: 0;
+    }
+
+    .formula-box {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid var(--blue-bright, #3b82f6);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.5rem;
+      margin-top: 1.25rem;
+      font-family: monospace;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin: 3rem 0;
+    }
+  </style>
 </head>
 
 <body class="regression-page">
@@ -33,61 +125,229 @@
 <section class="hero" style="padding-bottom: 2rem;">
   <div class="hero-badge">Unsupervised Learning</div>
   <h1>K-Means <span>Concepts</span></h1>
-  <p class="hero-desc">Understanding the theory and mathematics behind the K-Means clustering algorithm.</p>
+  <p class="hero-desc">A complete guide to the theory behind K-Means Clustering — from unsupervised learning fundamentals to real-world applications.</p>
 </section>
 
 <section id="regression-intro">
   <div class="section-wrap">
 
-    <div class="two-col">
-      <div class="left">
-        <div class="section-tag">Core Idea</div>
-        <h2 class="section-title">What is K-Means?</h2>
-        <p>K-Means is an <strong>unsupervised learning</strong> algorithm that groups data into K clusters. Unlike supervised learning, it works without labeled data — it finds structure on its own.</p>
-        <div class="info-box">
-          <p><strong>Key insight:</strong> Each cluster is represented by its <strong>centroid</strong> — the average position of all points belonging to that group.</p>
-        </div>
+    <!-- Hero Image -->
+    <div style="border-radius: 16px; overflow: hidden; margin-bottom: 4rem; display: flex; justify-content: center;">
+      <img src="https://pythongeeks.org/wp-content/uploads/2022/12/example-of-clustering.webp"
+       alt="Example of Clustering"
+       style="width: 60%; max-width: 750px; height: auto; display: block; filter: saturate(1.1); border-radius: 16px;">
       </div>
-      <div class="right">
-        <div class="concept-card">
-          <h3>Algorithm Steps</h3>
-          <p><strong>1.</strong> Choose K (number of clusters).</p>
-          <p><strong>2.</strong> Randomly initialize K centroids.</p>
-          <p><strong>3.</strong> Assign each point to the nearest centroid.</p>
-          <p><strong>4.</strong> Recalculate centroids as the mean of assigned points.</p>
-          <p><strong>5.</strong> Repeat steps 3–4 until convergence.</p>
+
+    <!-- 1. Unsupervised Learning -->
+    <div class="topic-section">
+      <div class="topic-number">01</div>
+      <div class="section-tag">Foundation</div>
+      <h2 class="section-title">What is Unsupervised Learning?</h2>
+      <div class="two-col">
+        <div class="left">
+          <p>Unsupervised learning is a branch of machine learning where the model is trained on <strong>data without labels</strong>. There is no "correct answer" to guide the algorithm — it must find structure and patterns on its own.</p>
+          <p style="margin-top: 1rem;">Unlike supervised learning (where you provide input-output pairs), unsupervised learning explores the data freely, discovering hidden relationships and natural groupings.</p>
+        </div>
+        <div class="right">
+          <div class="concept-card">
+            <h3>Supervised vs Unsupervised</h3>
+            <p><strong>Supervised:</strong> Learns from labeled data (e.g., spam vs. not spam).</p>
+            <p style="margin-top: 0.75rem;"><strong>Unsupervised:</strong> Finds structure in unlabeled data with no predefined categories.</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="concepts-grid" style="margin-top: 4rem;">
-      <div class="concept-card">
-        <h3>Distance Metric</h3>
-        <p>Uses <strong>Euclidean distance</strong> to measure how close a point is to each centroid. The point is assigned to the cluster with the smallest distance.</p>
-      </div>
-      <div class="concept-card">
-        <h3>Inertia</h3>
-        <p>The sum of squared distances from each point to its centroid. A lower inertia means more compact and well-separated clusters.</p>
-      </div>
-      <div class="concept-card">
-        <h3>Elbow Method</h3>
-        <p>A technique to choose the optimal K by plotting inertia vs. number of clusters and finding the "elbow" where improvement slows down.</p>
-      </div>
-      <div class="concept-card">
-        <h3>Centroids</h3>
-        <p>The center of each cluster. After convergence, each centroid represents the "average profile" of all data points in its group.</p>
-      </div>
-      <div class="concept-card">
-        <h3>Convergence</h3>
-        <p>The algorithm stops when centroids no longer move significantly between iterations, meaning the clusters have stabilized.</p>
-      </div>
-      <div class="concept-card">
-        <h3>Limitations</h3>
-        <p>K-Means assumes spherical clusters and requires K to be defined upfront. It is sensitive to outliers and initial centroid placement.</p>
+    <hr class="divider">
+
+    <!-- 2. Clustering -->
+    <div class="topic-section">
+      <div class="topic-number">02</div>
+      <div class="section-tag">Core Concept</div>
+      <h2 class="section-title">What is Clustering?</h2>
+      <div class="two-col">
+        <div class="left">
+          <p><strong>Clustering</strong> is the task of grouping a set of objects so that items in the same group (called a <em>cluster</em>) are more similar to each other than to those in other groups.</p>
+          <p style="margin-top: 1rem;">Think of it like sorting a pile of mixed fruits by color and size — without anyone telling you the categories in advance.</p>
+        </div>
+        <div class="right">
+          <div class="concepts-grid" style="margin-top: 0;">
+            <div class="concept-card">
+              <h3>Intra-cluster</h3>
+              <p>Points inside a cluster should be as <strong>similar</strong> as possible.</p>
+            </div>
+            <div class="concept-card">
+              <h3>Inter-cluster</h3>
+              <p>Points across clusters should be as <strong>different</strong> as possible.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div style="text-align: center; margin-top: 3rem;">
+    <hr class="divider">
+
+    <!-- 3. K-Means -->
+    <div class="topic-section">
+      <div class="topic-number">03</div>
+      <div class="section-tag">The Algorithm</div>
+      <h2 class="section-title">What is K-Means?</h2>
+      <p>K-Means is the most widely used clustering algorithm. It partitions N data points into <strong>K clusters</strong>, where each point belongs to the cluster with the nearest centroid.</p>
+      <div class="info-box" style="margin-top: 1.5rem;">
+        <p><strong>The "K"</strong> refers to the number of clusters you choose before running the algorithm. Selecting the right K is a critical step — often done using the <em>Elbow Method</em>, which plots inertia vs. number of clusters to find the optimal value.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 4. Centroids -->
+    <div class="topic-section">
+      <div class="topic-number">04</div>
+      <div class="section-tag">Key Element</div>
+      <h2 class="section-title">Centroids</h2>
+      <div class="two-col">
+        <div class="left">
+          <p>A <strong>centroid</strong> is the geometric center of a cluster. It is calculated as the <em>mean</em> of all data points assigned to that cluster.</p>
+          <p style="margin-top: 1rem;">The centroid does not have to be an actual data point — it is simply the average coordinate in the feature space.</p>
+          <div class="formula-box">
+            μ<sub>k</sub> = (1 / |C<sub>k</sub>|) × Σ x<sub>i</sub>
+          </div>
+        </div>
+        <div class="right">
+          <div class="concept-card">
+            <h3>Centroid Update Rule</h3>
+            <p>After each assignment step, the centroid is recalculated as the mean position of all points in its cluster. This pulls the center toward the true heart of the group.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 5. Distance Metrics -->
+    <div class="topic-section">
+      <div class="topic-number">05</div>
+      <div class="section-tag">Measurement</div>
+      <h2 class="section-title">Distance Metrics — Euclidean Distance</h2>
+      <div class="two-col">
+        <div class="left">
+          <p>K-Means uses <strong>Euclidean distance</strong> to measure how close a data point is to each centroid. The point is assigned to the cluster whose centroid is nearest.</p>
+          <div class="formula-box" style="margin-top: 1.25rem;">
+            d(x, μ) = √ Σ (x<sub>i</sub> − μ<sub>i</sub>)²
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">Where <em>x</em> is the data point and <em>μ</em> is the centroid.</p>
+        </div>
+        <div class="right">
+          <div class="concepts-grid" style="margin-top: 0;">
+            <div class="concept-card">
+              <h3>Small distance</h3>
+              <p>The point is very similar to its centroid — a good cluster fit.</p>
+            </div>
+            <div class="concept-card">
+              <h3>Large distance</h3>
+              <p>The point is far from its centroid — may belong to another cluster.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 6. Iterative Process -->
+    <div class="topic-section">
+      <div class="topic-number">06</div>
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-title">The Iterative Process</h2>
+      <p>K-Means runs in repeated cycles until the clusters stabilize. Each cycle has two steps: <strong>assignment</strong> and <strong>update</strong>.</p>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <p><strong>Initialize:</strong> Randomly place K centroids in the feature space.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <p><strong>Assign:</strong> Calculate the distance from each data point to every centroid. Assign each point to its nearest centroid.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <p><strong>Update:</strong> Recalculate each centroid as the mean of all points currently assigned to it.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <p><strong>Repeat:</strong> Go back to step 2. Continue until centroids stop moving or a maximum number of iterations is reached.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 7. Variance & Convergence -->
+    <div class="topic-section">
+      <div class="topic-number">07</div>
+      <div class="section-tag">Optimization</div>
+      <h2 class="section-title">Variance and Convergence</h2>
+      <div class="two-col">
+        <div class="left">
+          <p>K-Means minimizes <strong>inertia</strong> — the sum of squared distances between each point and its centroid. Lower inertia means tighter, more compact clusters.</p>
+          <div class="formula-box" style="margin-top: 1.25rem;">
+            Inertia = Σ Σ ‖x<sub>i</sub> − μ<sub>k</sub>‖²
+          </div>
+          <p style="margin-top: 1rem;"><strong>Convergence</strong> occurs when the centroids no longer change position between iterations — meaning the algorithm has found a stable solution.</p>
+        </div>
+        <div class="right">
+          <div class="concept-card">
+            <h3>Local Minima</h3>
+            <p>K-Means is not guaranteed to find the global optimum. The result depends on initial centroid placement — that's why <strong>K-Means++</strong> was developed to improve initialization and avoid poor starting points.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 8. Real-World Applications -->
+    <div class="topic-section">
+      <div class="topic-number">08</div>
+      <div class="section-tag">In Practice</div>
+      <h2 class="section-title">Real-World Applications</h2>
+      <p>K-Means is used across many industries to uncover hidden structure in data and drive data-driven decisions.</p>
+
+      <div class="apps-grid">
+        <div class="app-card">
+          <div class="app-icon">🛍️</div>
+          <h4>Customer Segmentation</h4>
+          <p>Group customers by behavior and spending patterns.</p>
+        </div>
+        <div class="app-card">
+          <div class="app-icon">🖼️</div>
+          <h4>Image Compression</h4>
+          <p>Reduce colors by clustering similar pixel values.</p>
+        </div>
+        <div class="app-card">
+          <div class="app-icon">📰</div>
+          <h4>Document Clustering</h4>
+          <p>Organize news articles or documents by topic.</p>
+        </div>
+        <div class="app-card">
+          <div class="app-icon">🏥</div>
+          <h4>Medical Diagnosis</h4>
+          <p>Identify patient subgroups with similar symptoms.</p>
+        </div>
+        <div class="app-card">
+          <div class="app-icon">📡</div>
+          <h4>Anomaly Detection</h4>
+          <p>Points far from any centroid may be anomalies.</p>
+        </div>
+        <div class="app-card">
+          <div class="app-icon">🗺️</div>
+          <h4>Geospatial Analysis</h4>
+          <p>Cluster geographic locations for logistics and mapping.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
       <a href="/clustering/application" class="btn-primary" style="display: inline-block; padding: 0.85rem 2rem; background: var(--blue-bright); color: #fff; border-radius: 10px; font-weight: 600; text-decoration: none;">Try the Application →</a>
     </div>
 
