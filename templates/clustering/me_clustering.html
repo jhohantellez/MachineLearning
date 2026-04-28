@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K-Means Results</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/home.css">
+</head>
+
+<body class="regression-page">
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 18 18" fill="none">
+        <path d="M2 14L7 8l3 3 6-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">ML App</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/clustering/concepts">Concepts</a></li>
+    <li><a href="/clustering/application" style="color: var(--blue-bright);">Application</a></li>
+  </ul>
+</nav>
+
+<section class="hero" style="padding-bottom: 2rem;">
+  <div class="hero-badge">Manual K-Means Project</div>
+  <h1>K-Means <span>Results</span></h1>
+  <p class="hero-desc">
+    Analysis of a manual clustering simulation developed with 100 records and 3 iterations using Euclidean distance logic.
+  </p>
+</section>
+
+<section id="regression-intro">
+  <div class="section-wrap">
+
+    <div class="two-col">
+      <div class="left">
+        <div class="section-tag">01 Dataset</div>
+        <h2 class="section-title">Dataset Explanation</h2>
+        <p>
+          This manual K-Means simulation was developed using a dataset composed of
+          <strong>100 records</strong>, each represented by two numerical variables:
+          <strong>X</strong> and <strong>Y</strong>.
+        </p>
+
+        <div class="info-box">
+          <p>
+            These variables can represent measurable attributes such as age and income,
+            production and cost, or any pair of continuous values.
+          </p>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="concept-card">
+          <h3>Sample Data</h3>
+          <p>ID 1 → (28,1028)</p>
+          <p>ID 2 → (18,1363)</p>
+          <p>ID 3 → (21,1257)</p>
+          <p>ID 4 → (20,1009)</p>
+          <p>ID 5 → (28,1916)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="concepts-grid" style="margin-top: 4rem;">
+      <div class="concept-card">
+        <h3>Initial Centroid 1</h3>
+        <p>(25, 1500)</p>
+      </div>
+
+      <div class="concept-card">
+        <h3>Initial Centroid 2</h3>
+        <p>(40, 3500)</p>
+      </div>
+
+      <div class="concept-card">
+        <h3>Initial Centroid 3</h3>
+        <p>(60, 8000)</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 5rem;">
+      <div class="section-tag">03 Calculation</div>
+      <h2 class="section-title">Distance Calculations</h2>
+
+      <p>
+        To determine cluster membership, the Euclidean Distance metric was applied
+        between every data point and each centroid.
+      </p>
+
+      <div class="info-box">
+        <p><strong>Formula:</strong> d = √((x₂ - x₁)² + (y₂ - y₁)²)</p>
+      </div>
+
+      <div class="concepts-grid" style="margin-top: 2rem;">
+        <div class="concept-card">
+          <h3>Record 1</h3>
+          <p>C1: 472.01</p>
+          <p>C2: 2472.03</p>
+          <p>C3: 6972.07</p>
+        </div>
+
+        <div class="concept-card">
+          <h3>Record 2</h3>
+          <p>C1: 137.18</p>
+          <p>C2: 2137.11</p>
+          <p>C3: 6637.13</p>
+        </div>
+
+        <div class="concept-card">
+          <h3>Record 3</h3>
+          <p>C1: 243.03</p>
+          <p>C2: 2243.08</p>
+          <p>C3: 6743.11</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 5rem;">
+      <div class="section-tag">04 Iterations</div>
+      <h2 class="section-title">Tables of Iterations</h2>
+
+      <p>
+        The simulation was executed through <strong>three complete iterations</strong>.
+        Each iteration recalculated centroids and reassigned records until reaching
+        a stable configuration.
+      </p>
+    </div>
+    
+    <div class="concepts-grid" style="margin-top: 4rem;">
+      <div class="concept-card">
+        <h3>Cluster 1</h3>
+        <p>45 Records</p>
+      </div>
+
+      <div class="concept-card">
+        <h3>Cluster 2</h3>
+        <p>28 Records</p>
+      </div>
+
+      <div class="concept-card">
+        <h3>Cluster 3</h3>
+        <p>27 Records</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 5rem;">
+      <div class="section-tag">06 Update Process</div>
+      <h2 class="section-title">Centroid Updates</h2>
+
+      <div class="concepts-grid" style="margin-top: 2rem;">
+        <div class="concept-card">
+          <h3>Cluster 1</h3>
+          <p>(25,1500) → (28.71,1583.76)</p>
+        </div>
+
+        <div class="concept-card">
+          <h3>Cluster 2</h3>
+          <p>(40,3500) → (44.60,4148.20)</p>
+        </div>
+
+        <div class="concept-card">
+          <h3>Cluster 3</h3>
+          <p>(60,8000) → (57.67,7856.50)</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 5rem;">
+      <div class="section-tag">07 Optimization</div>
+      <h2 class="section-title">Variance Comparison</h2>
+
+      <div class="concepts-grid" style="margin-top: 2rem;">
+        <div class="concept-card">
+          <h3>Iteration 1</h3>
+          <p>79,394.78</p>
+        </div>
+
+        <div class="concept-card">
+          <h3>Iteration 2</h3>
+          <p>76,366.89</p>
+        </div>
+
+        <div class="concept-card">
+          <h3>Iteration 3</h3>
+          <p>76,063.65</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 5rem;">
+      <div class="section-tag">08 Conclusion</div>
+      <h2 class="section-title">Interpretation of Results</h2>
+
+      <p>
+        The final clustering structure suggests the presence of three natural levels
+        within the dataset: low values, medium values, and high values.
+      </p>
+
+      <div class="info-box">
+        <p>
+          The stability reached during the third iteration indicates successful
+          convergence toward a local optimum.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 <span>ML App</span> — Systems Engineering Project</p>
+  </div>
+</footer>
+
+</body>
+</html>

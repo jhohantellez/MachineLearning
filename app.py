@@ -128,6 +128,10 @@ def clustering():
 def clustering_concepts():
     return render_template("clustering/concepts_clustering.html")
 
+@app.route("/clustering/me_clustering")
+def clustering_results():
+    return render_template("clustering/me_clustering.html")
+
 @app.route("/clustering/application")
 def clustering_application():
     k = request.args.get("k", default=3, type=int)
