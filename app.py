@@ -133,7 +133,6 @@ def clustering_application():
     k = request.args.get("k", default=3, type=int)
 
     info = Clustering.AppClusteringKmeans(k)
-
     centers = info["centers"]
     centers = [[round(value, 2) for value in center] for center in centers]
     summary = info["summary"]

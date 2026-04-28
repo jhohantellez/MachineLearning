@@ -15,8 +15,6 @@ def getDataSet():
     df = df.dropna()
 
     return df
-
-
 def AppClusteringKmeans(k=3):
     df = getDataSet()
 
