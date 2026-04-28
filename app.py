@@ -144,10 +144,11 @@ def clustering_application():
 
     return render_template(
         "clustering/application_clustering.html",
-        centers=enumerate(centers),
-        summary=summary,
-        results=results,
-        k=k
+        centers=enumerate(info["centers"]),
+        summary=info["summary"],
+        results=info["results"],
+        k=k,
+        graph=info["graph"]
     )
 #-------------------- RUN --------------------
 if __name__ == "__main__":
