@@ -50,20 +50,30 @@ def AppClusteringKmeans(k=3):
     plt.scatter(
         df["Credit_Limit"],
         df["Total_Trans_Amt"],
-        c=df["cluster"]
+        c=df["cluster"],
+        alpha=0.5
+    )
+
+    centers_original = scaler.inverse_transform(model.cluster_centers_)
+
+    plt.scatter(
+        centers_original[:, 0],
+        centers_original[:, 1],
+        marker='X',
+        s=200,
+        label='Centroids'
     )
 
     plt.xlabel("Credit Limit")
-    plt.ylabel("Total Amount")
+    plt.ylabel("Total Transaction Amount")
+    plt.title(f"K-Means Clustering ({k} clusters)")
+    plt.legend()
 
     buffer = BytesIO()
     plt.savefig(buffer, format="png")
     buffer.seek(0)
 
-    image_png = buffer.getvalue()
-    buffer.close()
-
-    graph = base64.b64encode(image_png).decode("utf-8")
+    graph = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
     plt.close()
 
