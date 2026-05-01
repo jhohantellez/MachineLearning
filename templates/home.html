@@ -1,129 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - ML App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ML App — Machine Learning Explorer</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f1117;
-            color: #e2e8f0;
-            margin: 0;
-            text-align: center;
-        }
-
-        nav {
-            background: #1a1d2e;
-            padding: 15px;
-        }
-
-        nav h2 {
-            color: #7c83f5;
-            margin: 0;
-        }
-
-        .container {
-            padding: 50px 20px;
-        }
-
-        h1 {
-            color: #7c83f5;
-        }
-
-        .cards {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background: #1a1d2e;
-            border: 1px solid #2d3148;
-            border-radius: 10px;
-            padding: 20px;
-            width: 280px;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #7c83f5;
-        }
-
-        .card h3 {
-            color: #7c83f5;
-        }
-
-        .card p {
-            color: #a0aec0;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 15px;
-            background: #7c83f5;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .btn:hover {
-            background: #5a61d6;
-        }
-    </style>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/home.css">
 </head>
 
-<body>
+<body class="home">
 
 <nav>
-    <h2> Machine Learning App</h2>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 18 18" fill="none"><path d="M2 14L7 8l3 3 6-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <span class="nav-logo-text">ML App</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what-is-ml">What is ML</a></li>
+    <li><a href="/linearregression">Regression</a></li>
+    <li><a href="/logisticregression">Classification</a></li>
+    <li><a href="/usecases">Use Cases</a></li>
+    <li><a href="/multinomial">Multinomial</a></li>
+    <li><a href="/clustering">Unsupervised Learning</a></li>
+  </ul>
 </nav>
 
-<div class="container">
-    <h1>Welcome</h1>
-    <p>Select a section to explore the project</p>
+<section class="hero">
+  <div class="hero-badge">Intelligent Systems & Data Analytics</div>
+  <h1><span>Machine Learning</span></h1>
+  <p class="hero-desc">An interactive exploration of computational learning. From statistical regression to advanced data grouping, discover how algorithms transform raw information into predictive knowledge through mathematical optimization.</p>
+</section>
 
-    <div class="cards">
-
-        <div class="card">
-            <h3> Salary Predictor</h3>
-            <p>
-                Explore how linear regression predicts salaries based on data.
-            </p>
-            <a href="/linearregression" class="btn">Go</a>
-
+<section class="what-is-ml" id="what-is-ml">
+  <div class="section-wrap">
+    <div class="section-tag">Foundation</div>
+    <h2 class="section-title">What is Machine Learning?</h2>
+    
+    <div class="two-col">
+      <div class="left">
+        <p>Unlike traditional imperative programming where we define explicit <strong>if/else</strong> logic, Machine Learning uses statistical algorithms to autonomously detect patterns within large <strong>datasets</strong>.</p>
+        <p>The objective is to construct a <strong>mathematical model</strong> capable of generalizing behaviors and making high-precision predictions when exposed to previously unseen data.</p>
+        <div class="info-box">
+          <p><strong>Engineer's Note:</strong> ML is not "magic"; it is applied multivariable calculus and linear algebra. Success depends on data quality and hyperparameter tuning.</p>
         </div>
+      </div>
 
-        <div class="card">
-            <h3> Use Cases</h3>
-            <p>
-                Discover real-world Machine Learning applications and examples.
-            </p>
-            <a href="/usecases" class="btn">Go</a>
+      <div class="right">
+        <div class="types-grid">
+          <div class="type-card">
+            <div class="type-dot"></div>
+            <div>
+              <h4>Supervised Learning</h4>
+              <p>Training models with labeled data (Input/Output pairs) for Regression and Classification tasks.</p>
+            </div>
+          </div>
+          <div class="type-card">
+            <div class="type-dot" style="background:#93c5fd;"></div>
+            <div>
+              <h4>Unsupervised Learning</h4>
+              <p>Discovering hidden structures and natural groupings (Clustering) in data without prior labeling.</p>
+            </div>
+          </div>
         </div>
-
-        <div class="card">
-            <h3> Multinomial </h3>
-            <p>
-                Discover real-world Machine Learning applications and examples.
-            </p>
-            <a href="/multinomial" class="btn">Go</a>
-        </div>
-        <div class="card">
-            <h3> Logistic Regression</h3>
-            <p>
-                Discover real-world Machine Learning applications and examples.
-            </p>
-            <a href="/logisticregression" class="btn">Go</a>
-        </div>
-
+      </div>
     </div>
-</div>
+
+    <div class="section-tag" style="margin-top:3rem;">Core Concepts</div>
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <h3>Train vs Test</h3>
+        <p>Splitting data to prevent <strong>Overfitting</strong> and ensure the model can generalize to real-world scenarios.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Features & Labels</h3>
+        <p><strong>Features</strong> are independent variables (inputs); <strong>Labels</strong> are the target values the model aims to predict.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Loss Function</h3>
+        <p>A mathematical algorithm that quantifies the "distance" between the prediction and the actual value during training.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Evaluation Metrics</h3>
+        <p>Using Accuracy, Precision, and Recall to validate the technical performance and reliability of the model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how-it-works">
+  <div class="section-wrap">
+    <div class="section-tag">Project Pipeline</div>
+    <h2 class="section-title">How does a model learn?</h2>
+    
+    <div class="pipeline">
+      <div class="pipe-step">
+        <div class="pipe-num">01</div>
+        <h4>Definition</h4>
+        <p>Identifying the problem type: Predictive, Categorical, or Structural.</p>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">02</div>
+        <h4>Ingestion</h4>
+        <p>Data gathering and <strong>Pre-processing</strong> to eliminate noise and handle missing values.</p>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">03</div>
+        <h4>Engineering</h4>
+        <p>Feature selection and extraction to isolate the most relevant variables for the output.</p>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">04</div>
+        <h4>Training</h4>
+        <p>Iterative weight adjustment through optimization algorithms like Gradient Descent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 <span>ML App</span> — Systems Engineering | Data Science Research Project</p>
+  </div>
+</footer>
 
 </body>
 </html>

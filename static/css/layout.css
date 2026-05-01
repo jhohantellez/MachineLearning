@@ -1,0 +1,45 @@
+section { padding: 5rem 3rem; }
+.section-wrap { max-width: 1100px; margin: 0 auto; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.concepts-grid, .apps-grid, .glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  section { padding: 3.5rem 1.5rem; }
+  .two-col { grid-template-columns: 1fr; }
+}
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  margin-top: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.pipe-step {
+  padding: 2.5rem 2rem;
+  position: relative;
+  border-right: 1px solid var(--border);
+}
+
+.pipe-step:last-child {
+  border-right: none;
+}
+
+@media (max-width: 768px) {
+  .pipeline { grid-template-columns: 1fr; }
+  .pipe-step { border-right: none; border-bottom: 1px solid var(--border); }
+}

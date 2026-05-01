@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Salary Predictor — Linear Regression</title>
-  
+  <title>Unsupervised Learning</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/static/css/base.css">
   <link rel="stylesheet" href="/static/css/layout.css">
   <link rel="stylesheet" href="/static/css/components.css">
-  <link rel="stylesheet" href="/static/css/home.css"> </head>
+  <link rel="stylesheet" href="/static/css/home.css">
+</head>
 
 <body class="regression-page">
 
@@ -23,15 +24,16 @@
   </a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
-    <li><a href="/linearregression/concepts">Concepts</a></li>
-    <li><a href="/linearregression/application" style="color: var(--blue-bright);">Application</a></li>
+    <li><a href="/clustering/concepts">Concepts</a></li>
+    <li><a href="/clustering/me_clustering">K-Means Manual Exercise</a></li>
+    <li><a href="/clustering/application" style="color: var(--blue-bright);">Application</a></li>
   </ul>
 </nav>
 
 <section class="hero" style="padding-bottom: 2rem;">
-  <div class="hero-badge">Supervised Learning</div>
-  <h1>Salary <span>Predictor</span></h1>
-  <p class="hero-desc">Predicting professional compensation through Linear Regression models. Analyze how variables like years of experience and specialized skills correlate with salary growth.</p>
+  <div class="hero-badge">Unsupervised Learning</div>
+  <h1>Customer <span>Segmentation</span></h1>
+  <p class="hero-desc">Grouping unlabeled data into meaningful clusters using the K-Means algorithm. Discover hidden patterns and natural groupings within complex datasets.</p>
 </section>
 
 <section id="regression-intro">
@@ -39,17 +41,17 @@
     <div class="two-col">
       <div class="left">
         <div class="section-tag">Project Overview</div>
-        <h2 class="section-title">Data-Driven Salary Forecasting</h2>
-        <p>This implementation demonstrates how <strong>Linear Regression</strong> identifies the linear relationship between independent features (experience) and a dependent continuous variable (salary).</p>
-        
+        <h2 class="section-title">Pattern Discovery Through Clustering</h2>
+        <p>This implementation demonstrates how <strong>K-Means Clustering</strong> partitions data into K distinct groups by minimizing the distance between each point and its assigned centroid.</p>
+
         <div class="info-box">
-          <p><strong>Methodology:</strong> We utilize Ordinary Least Squares (OLS) to minimize the sum of squared residuals, ensuring the highest possible accuracy for our predictive line.</p>
+          <p><strong>Methodology:</strong> The algorithm iteratively assigns data points to the nearest centroid and recalculates centroid positions until convergence, optimizing intra-cluster cohesion.</p>
         </div>
       </div>
 
       <div class="right">
         <div class="concept-card" style="padding: 0; overflow: hidden; border-radius: 16px;">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Machine Learning Analytics" style="width: 100%; display: block; filter: saturate(1.2);">
+          <img src="https://images.unsplash.com/photo-1527474305487-b87b222841cc" alt="Clustering Visualization" style="width: 100%; display: block; filter: saturate(1.2);">
         </div>
       </div>
     </div>
@@ -57,15 +59,15 @@
     <div class="concepts-grid" style="margin-top: 4rem;">
       <div class="concept-card">
         <h3>Feature Set</h3>
-        <p>Years of experience, technical certifications, and role seniority.</p>
+        <p>Numerical attributes used to measure similarity and group data points into clusters.</p>
       </div>
       <div class="concept-card">
         <h3>Model Type</h3>
-        <p>Simple & Multiple Linear Regression (Scikit-Learn implementation).</p>
+        <p>K-Means Clustering (Scikit-Learn implementation) with configurable number of clusters.</p>
       </div>
       <div class="concept-card">
         <h3>Objective</h3>
-        <p>Reducing Mean Squared Error (MSE) to refine prediction reliability.</p>
+        <p>Minimizing intra-cluster variance (inertia) to find the most compact and separated groups.</p>
       </div>
     </div>
   </div>

@@ -27,6 +27,9 @@ x_test_scaled = scaler.transform(x_test)
 logistic_model = LogisticRegression()
 logistic_model.fit(x_train_scaled, y_train)
 
+
+
+
 y_pred = logistic_model.predict(x_test_scaled)
 
 conf_matrix = confusion_matrix(y_test, y_pred)

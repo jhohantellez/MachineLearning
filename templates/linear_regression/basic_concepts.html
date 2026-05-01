@@ -1,82 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Linear Regression</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linear Regression — Concepts</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/home.css">
 </head>
-<body class="bg-light">
 
-<div class="container mt-5">
+<body class="concepts-page">
 
-    <div class="card shadow p-4">
-        <h1 class="text-center mb-4">Linear Regression</h1>
-
-        <!-- What is it -->
-        <div class="mb-4">
-            <h3>What is Linear Regression?</h3>
-            <p>
-                Linear regression is a Machine Learning model used to predict numerical values
-                based on one or more input variables. It establishes a linear relationship
-                between the variables.
-            </p>
-        </div>
-
-        <!-- Formula -->
-        <div class="mb-4">
-            <h3>Mathematical Model</h3>
-            <div class="alert alert-primary text-center">
-                <strong>y = mx + b</strong>
-            </div>
-            <ul>
-                <li><strong>y:</strong> value to predict</li>
-                <li><strong>x:</strong> input variable</li>
-                <li><strong>m:</strong> slope (rate of change)</li>
-                <li><strong>b:</strong> intercept (initial value)</li>
-            </ul>
-        </div>
-
-        <!-- Example -->
-        <div class="mb-4">
-            <h3>Example</h3>
-            <p>
-                Linear regression can be used to predict a student's exam score based on study hours,
-                or estimate the price of a house based on its size.
-            </p>
-        </div>
-
-        <!-- Types -->
-        <div class="mb-4">
-            <h3>Types of Linear Regression</h3>
-            <ul>
-                <li><strong>Simple Linear Regression:</strong> uses one variable</li>
-                <li><strong>Multiple Linear Regression:</strong> uses multiple variables</li>
-            </ul>
-        </div>
-
-        <!-- Error -->
-        <div class="mb-4">
-            <h3>Model Error</h3>
-            <p>
-                The model tries to minimize the difference between actual values and predicted values.
-                One common metric used is the Mean Squared Error (MSE).
-            </p>
-        </div>
-
-        <!-- Applications -->
-        <div>
-            <h3>Applications</h3>
-            <ul>
-                <li>Price prediction</li>
-                <li>Trend analysis</li>
-                <li>Finance</li>
-                <li>Data science</li>
-            </ul>
-        </div>
-
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 18 18" fill="none"><path d="M2 14L7 8l3 3 6-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
+    <span class="nav-logo-text">ML App</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/linearregression">Linear Regression</a></li>
+    <li><a href="/linearregression/concepts" style="color: var(--blue-bright);">Concepts</a></li>
+    <li><a href="/linearregression/application">Application</a></li>
+    
+  </ul>
+</nav>
 
-</div>
+<section class="hero">
+  <div class="hero-badge">Statistical Modeling</div>
+  <h1>Linear <span>Regression</span></h1>
+  <p class="hero-desc">Fundamentals of supervised learning used to predict continuous numerical values by modeling the relationship between dependent and independent variables.</p>
+</section>
+
+<section id="math-section">
+  <div class="section-wrap">
+    <div class="two-col">
+      <div class="left">
+        <div class="section-tag">Mathematical Framework</div>
+        <h2 class="section-title">The Linear Model</h2>
+        <p>Linear regression establishes a relationship between a dependent variable (y) and one or more independent variables (x) using a straight line.</p>
+        
+        <div class="info-box">
+          <p style="font-size: 1.8rem; text-align: center; font-weight: 800; color: var(--blue-bright); margin: 1rem 0;">
+            y = mx + b
+          </p>
+          <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+            <li><strong>y:</strong> Predicted value (Target)</li>
+            <li><strong>x:</strong> Input variable (Feature)</li>
+            <li><strong>m:</strong> Slope (Rate of change/Weight)</li>
+            <li><strong>b:</strong> Intercept (Initial value/Bias)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="section-tag">Model Logic</div>
+        <div class="concepts-grid" style="grid-template-columns: 1fr;">
+          <div class="concept-card">
+            <h4>Simple vs Multiple</h4>
+            <p><strong>Simple:</strong> Uses only one input variable to predict the outcome.</p>
+            <p><strong>Multiple:</strong> Uses two or more variables (x1, x2, x3...) for more complex predictions.</p>
+          </div>
+          <div class="concept-card" style="background: var(--blue-light); border-color: var(--blue-bright);">
+            <h4>The Goal: Optimization</h4>
+            <p>The model finds the "best fit" line by minimizing the <strong>Mean Squared Error (MSE)</strong>. It calculates the average of the squared differences between actual and predicted values.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="applications-section" style="background: var(--section-bg);">
+  <div class="section-wrap">
+    <div class="section-tag">Real World</div>
+    <h2 class="section-title">Core Applications</h2>
+    
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <h3>Forecasting</h3>
+        <p>Predicting market trends, house prices, or weather temperatures based on historical data.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Analytics</h3>
+        <p>Estimating the impact of marketing spend on total sales or user growth.</p>
+      </div>
+      <div class="concept-card">
+        <h3>Science</h3>
+        <p>Modeling biological growth or chemical reactions based on controlled variables.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 <span>ML App</span> — Systems Engineering Academic Project</p>
+  </div>
+</footer>
 
 </body>
 </html>

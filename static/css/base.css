@@ -1,0 +1,22 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue-light:  #E9F1FA;
+  --blue-bright: #00ABE4;
+  --blue-dark:   #0088B8;
+  --blue-deep:   #005F82;
+  --white:       #FFFFFF;
+  --text-body:   #1a2b3c;
+  --text-muted:  #5a7a93;
+  --border:      #d4e4f0;
+  --section-bg:  #f3f8fd;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--white);
+  color: var(--text-body);
+  line-height: 1.7;
+}

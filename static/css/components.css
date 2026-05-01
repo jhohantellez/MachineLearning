@@ -1,0 +1,86 @@
+
+nav {
+  background: var(--white); border-bottom: 1px solid var(--border);
+  padding: 0 3rem; height: 62px; display: flex;
+  align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-icon { width: 34px; height: 34px; background: var(--blue-bright); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+.nav-logo-text { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: var(--text-body); }
+.nav-links { display: flex; gap: 2.25rem; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; }
+
+
+.concept-card, .app-card, .algo-box, .type-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem;
+}
+
+
+footer { background: var(--text-body); padding: 3rem; color: rgba(255,255,255,0.45); text-align: center; }
+
+.type-card {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.type-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--blue-bright);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.info-box {
+  background: var(--blue-light);
+  border-left: 4px solid var(--blue-bright);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 0 10px 10px 0;
+}
+.pipe-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: rgba(0, 171, 228, 0.15); /* Número tenue de fondo */
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.pipe-step h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-body);
+  margin-bottom: 8px;
+}
+
+.pipe-step p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+
+footer {
+  background: var(--text-body);
+  padding: 4rem 2rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+.footer-bottom span {
+  color: var(--blue-bright);
+  font-weight: 700;
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>K-Means Application — ML App</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/home.css">
+</head>
+
+<body class="regression-page">
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 18 18" fill="none">
+        <path d="M2 14L7 8l3 3 6-8" stroke="#fff" stroke-width="2"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">ML App</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/clustering">Overview</a></li>
+    <li><a href="/clustering/concepts">Concepts</a></li>
+    <li><a href="/clustering/application" style="color: var(--blue-bright);">Application</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Unsupervised Learning</div>
+  <h1>K-Means <span>Application</span></h1>
+  <p class="hero-desc">
+    Customer segmentation using clustering techniques to identify patterns in financial behavior.
+  </p>
+</section>
+
+<section>
+  <div class="section-wrap">
+
+    
+
+    <div class="section-tag">Context</div>
+    <h2 class="section-title">Dataset Context</h2>
+    <p>This dataset represents credit card customers and their financial behavior. The goal is to identify different types of clients based on their credit usage and transaction activity using unsupervised learning.</p>
+
+    <div class="section-tag">Dataset</div>
+    <h2 class="section-title">Dataset Explanation</h2>
+
+    <div class="two-col">
+      <div class="left">
+        <p><strong>Number of records:</strong> 10,000+</p>
+        <p>This dataset contains customer financial information used to analyze behavior patterns.</p>
+      </div>
+
+      <div class="right">
+        <div class="concept-card">
+          <h3>Features</h3>
+          <p>Credit_Limit</p>
+          <p>Total_Trans_Amt</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-card">
+      <h3>Data Preprocessing</h3>
+      <p>Missing values were removed and features were standardized using StandardScaler to ensure fair distance calculations.</p>
+    </div>
+
+    <div class="section-tag">Model</div>
+    <h2 class="section-title">Model Training</h2>
+
+    <div class="concept-card">
+      <p>The K-Means algorithm was applied using Scikit-learn. The model groups customers into K clusters based on similarity using Euclidean distance.</p>
+    </div>
+
+    <div class="concept-card">
+      <h3>Select Number of Clusters</h3>
+      <form method="get" action="/clustering/application">
+        <input type="number" name="k" min="2" max="10" value="{{ k }}">
+        <button type="submit" class="btn-primary">Run K-Means</button>
+      </form>
+    </div>
+
+    <div class="section-tag">Results</div>
+    <h2 class="section-title">Cluster Summary</h2>
+
+    <div class="concepts-grid">
+      {% for key, value in summary.items() %}
+      <div class="concept-card">
+        <h3>Cluster {{ key }}</h3>
+        <p>{{ value }} clients</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="section-tag">Centroids</div>
+    <h2 class="section-title">Cluster Centers</h2>
+
+    <div class="concepts-grid">
+      {% for i, c in centers %}
+      <div class="concept-card">
+        <h3>Cluster {{ i }}</h3>
+        <p>{{ c }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="section-tag">Visualization</div>
+    <h2 class="section-title">Scatter Plot</h2>
+
+    <div class="concept-card" style="text-align:center;">
+      <img src="data:image/png;base64,{{ graph }}" style="max-width:100%;">
+    </div>
+
+    <div class="section-tag">Data</div>
+    <h2 class="section-title">Sample Data</h2>
+
+    <div class="concept-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Credit Limit</th>
+            <th>Total Amount</th>
+            <th>Cluster</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in results %}
+          <tr>
+            <td>{{ row["Credit_Limit"] }}</td>
+            <td>{{ row["Total_Trans_Amt"] }}</td>
+            <td>{{ row["cluster"] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-tag">Interpretation</div>
+    <h2 class="section-title">Interpretation of Results</h2>
+
+    <div class="concept-card">
+      <p>The model identified distinct customer groups based on their financial behavior. Some clusters represent high spending customers, while others represent low activity users. This segmentation can be useful for marketing strategies, risk analysis, and customer profiling.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 <span>ML App</span> — Systems Engineering Project</p>
+  </div>
+</footer>
+
+</body>
+</html>

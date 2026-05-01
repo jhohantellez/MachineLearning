@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import joblib
 from train_multinominal import get_trained_model
+import Clustering
 
 app = Flask(__name__)
 
@@ -117,6 +118,38 @@ def multinomial_application():
     
     return render_template("MultinomialNB/Applicationnb.html", metrics=nb_metrics,  prediction=prediction, original_text=original_text)
 
+
+#-------------------- CLUSTERING --------------------
+@app.route("/clustering")
+def clustering():
+    return render_template("clustering.html")
+
+@app.route("/clustering/concepts")
+def clustering_concepts():
+    return render_template("clustering/concepts_clustering.html")
+
+@app.route("/clustering/me_clustering")
+def clustering_results():
+    return render_template("clustering/me_clustering.html")
+
+@app.route("/clustering/application")
+def clustering_application():
+    k = request.args.get("k", default=3, type=int)
+
+    info = Clustering.AppClusteringKmeans(k)
+    centers = info["centers"]
+    centers = [[round(value, 2) for value in center] for center in centers]
+    summary = info["summary"]
+    results = info["results"]
+
+    return render_template(
+        "clustering/application_clustering.html",
+        centers=enumerate(info["centers"]),
+        summary=info["summary"],
+        results=info["results"],
+        k=k,
+        graph=info["graph"]
+    )
 #-------------------- RUN --------------------
 if __name__ == "__main__":
     app.run(debug=True)
